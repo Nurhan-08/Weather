@@ -23,8 +23,8 @@ function fetchWeather(city_name = "New York") {
             cityName.innerHTML = `${name} <span>${sys.country}</span>`
             tempH1.innerHTML = `${~~(main.temp - 273.15)} <span>°c</span>`
             p1.innerHTML = `${weather[0].main}`
-            p2.innerHTML = `${wind.speed}`
-            p3.innerHTML = `${main.humidity}`
+            p2.innerHTML = `Ветер <span>${wind.speed}км/ч</span>`
+            p3.innerHTML = `Влажность <span>${main.humidity}%</span>`
             img.src = setImg(weather[0].main)
         })
         .catch()
