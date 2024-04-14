@@ -12,7 +12,13 @@ const p3 = p[2]
 const apiKey = "&appid=6511e14723ad8cb6f243ece1366c5deb"
 const baseURL = "https://api.openweathermap.org/data/2.5/weather?q="
 
-
+const weatherTranslations = {
+    "Rain": "Дождь",
+    "Clear": "Ясно",
+    "Clouds": "Облачно",
+    "Snow": "Снег",
+    "Foggy": "Туман"
+};
 
 function fetchWeather(city_name = "New York") {
     fetch(baseURL + city_name + apiKey)
@@ -22,7 +28,7 @@ function fetchWeather(city_name = "New York") {
             const { name, sys, main, weather, wind } = data
             cityName.innerHTML = `${name} <span>${sys.country}</span>`
             tempH1.innerHTML = `${~~(main.temp - 273.15)} <span>°c</span>`
-            p1.innerHTML = `${weather[0].main}`
+            p1.innerHTML = `${weatherTranslations[weather[0].main]}`;
             p2.innerHTML = `Ветер <span>${wind.speed}км/ч</span>`
             p3.innerHTML = `Влажность <span>${main.humidity}%</span>`
             img.src = setImg(weather[0].main)
